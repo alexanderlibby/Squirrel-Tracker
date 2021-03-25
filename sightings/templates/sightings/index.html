@@ -9,7 +9,26 @@
 </head>
 
 <body>
-    Hi! Welcome to sighting page. We are under construction!
+    <h1>All sigthings in our system</h1>
+    <table>
+        <table>
+            <tr>
+                <th>Unique Squirrel ID</th>
+                <th>Date</th>
+                <th>Link to more detail</th>
+            </tr>
+
+            {% for s in sightings %}
+
+            <tr>
+                <td>{{ s.unique_squirrel_id }}</td>
+                <td>{{ s.date }}</td>
+                <td><a href='/sightings/{{ s.unique_squirrel_id }}'>more</a></td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
 </body>
 
 </html>
