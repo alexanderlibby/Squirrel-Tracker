@@ -76,3 +76,6 @@ class Sighting(models.Model):
     runs_from = models.BooleanField(
         default=False
     )
+
+    def __str__(self):
+        return self.unique_squirrel_id
