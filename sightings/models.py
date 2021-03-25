@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 # Create your models here
 
 
-class Sigthings(models.Model):
+class Sighting(models.Model):
     latitude = models.FloatField(
         help_text=_('lat cordinate')
     )

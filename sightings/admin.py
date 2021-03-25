@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Sigthings
+from .models import Sighting
 # Register your models here.
-admin.site.register(Sigthings)
+admin.site.register(Sighting)
