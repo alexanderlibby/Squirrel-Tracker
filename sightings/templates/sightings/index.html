@@ -1,34 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'sightings/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sighthing</title>
-</head>
+{% load static %}
 
-<body>
-    <h1>All sigthings in our system</h1>
-    <table>
-        <table>
-            <tr>
-                <th>Unique Squirrel ID</th>
-                <th>Date</th>
-                <th>Link to more detail</th>
-            </tr>
+{% block title %} All sightings {% endblock %}
 
-            {% for s in sightings %}
+{% block main %}
+<section class="jumbotron text-center">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>
+                All of sightings
+            </h1>
+            <a href="/sightings/add" class="btn btn-primary my-2">Report a new signting</a>
+            </p>
+        </div>
+    </div>
+</section>
 
-            <tr>
-                <td>{{ s.unique_squirrel_id }}</td>
-                <td>{{ s.date }}</td>
-                <td><a href='/sightings/{{ s.unique_squirrel_id }}'>more</a></td>
-            </tr>
 
-            {% endfor %}
+<div class="row">
+    <div class="col-lg">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Unique Squirrel ID</th>
+                    <th>Date</th>
+                    <th>Link to more detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in sightings %}
+                <tr>
+                    <td>{{ s.unique_squirrel_id }}</td>
+                    <td>{{ s.date }}</td>
+                    <td><a href='/sightings/{{ s.unique_squirrel_id }}'>more</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
 
         </table>
-</body>
-
-</html>
+    </div>
+</div>
+{% endblock %}

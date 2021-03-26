@@ -24,6 +24,7 @@ def index(request):
     return render(request, 'sightings/index.html', context)
 
 
-# def details(request, unique_squirrel_id):
-
-#     return render(request, 'sighting/')
+def details(request, unique_squirrel_id):
+    
+    str(unique_squirrel_id)
+    return render(request, 'sighting/')
