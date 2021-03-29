@@ -9,6 +9,7 @@ from .models import Sighting
 def index(request):
     """
     A view that lists all squirrel sightings with links to view each sighting
+
         Located at: /sightings
         Methods Supported: GET
         Fields to show:
@@ -24,7 +25,19 @@ def index(request):
     return render(request, 'sightings/index.html', context)
 
 
-def details(request, unique_squirrel_id):
-    
-    str(unique_squirrel_id)
-    return render(request, 'sighting/')
+def detail(request, input_id):
+    """
+    A view that show a detail of a sighting
+
+        - Latitude
+        - Longitude
+        - Unique Squirrel ID
+        - Shift
+        - Date
+        - Age
+    """
+    squirrel = get_object_or_404(Sighting, pk=input_id)
+    context = {
+        'squirrel': squirrel
+    }
+    return render(request, 'sightings/detail.html', context)
