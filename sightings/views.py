@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from .forms import EditSightingForm
 
 from .models import Sighting
 
@@ -25,9 +27,9 @@ def index(request):
     return render(request, 'sightings/index.html', context)
 
 
-def detail(request, input_id):
+def details(request, input_id):
     """
-    A view that show a detail of a sighting
+    A view that show a detail of a sighting and allow edits
 
         - Latitude
         - Longitude
@@ -36,8 +38,66 @@ def detail(request, input_id):
         - Date
         - Age
     """
-    squirrel = get_object_or_404(Sighting, pk=input_id)
-    context = {
-        'squirrel': squirrel
-    }
-    return render(request, 'sightings/detail.html', context)
+    if request.method == 'GET':
+        # fetch the object using input_id
+        squirrel = get_object_or_404(Sighting, pk=input_id)
+        form = EditSightingForm(None, instance=squirrel)
+        context = {
+            'squirrel': squirrel,
+            'mode': 'You can edit the sighting details below by changing the text and click save.',
+            'form': form
+        }
+        return render(request, 'sightings/details_with_form.html', context)
+
+    if request.method == 'POST':
+        # request.POST is the dictionary of payload we got from the POST
+        squirrel = get_object_or_404(Sighting, pk=input_id)
+        form = EditSightingForm(request.POST, instance=squirrel)
+        input_id = request.POST.get('unique_squirrel_id')
+        # Data validation will happen in EditSightingForm
+        if form.is_valid():
+            # The one who modify the database is form, not
+            form.save()
+            # squirrel = get_object_or_404(Sighting, pk=input_id)
+            context = {
+                'squirrel': squirrel,
+                'mode': 'Saved your changes',
+                'form': form
+            }
+            return render(request, 'sightings/details_with_form.html', context)
+        else:
+            # status=400
+            context = {
+                'squirrel': squirrel,
+                'mode': 'Some fields are not in the correct format. Please try again.',
+                'form': form
+            }
+            return render(request, 'sightings/details_with_form.html', context)
+
+
+# def edit_sighting(request):
+#     if request.method == 'POST':
+#         # request.POST is the dictionary of payload we got from the POST
+#         form = EditSightingForm(request.POST)
+#         input_id = request.POST.get('unique_squirrel_id')
+#         squirrel = get_object_or_404(Sighting, pk=input_id)
+#         # Data validation will happen in EditSightingForm
+#         if form.is_valid():
+#             # The one who modify the database is form, not
+#             form.save()
+#             context = {
+#                 'squirrel': squirrel
+#                 'mode': 'Saved your changes'
+#             }
+#             return render(request, 'sightings/details.html', context)
+#         else:
+#             # status=400
+#             context = {
+#                 'squirrel': squirrel
+#                 'mode': 'Some fields are not in the correct format. Please try again.'
+#             }
+#             return render(request, 'sightings/details.html', context)
+
+#     # If someone assess this view using GET, lets tell them
+#     # But it should not happen
+#     return JsonResponse({}, status=405)

@@ -15,13 +15,26 @@ class Sighting(models.Model):
         max_length=100,
         primary_key=True
     )
+
+    # AM = _('AM')
+    # PM = _('PM')
+    # SHIFT_CHOICES = [AM, PM]
     shift = models.CharField(
-        max_length=5
+        max_length=5,
+        help_text=_('AM or PM')
+        # choices=SHIFT_CHOICES
     )
+
     date = models.DateField()  # MMDDYYY in CSV
+    # ADULT = _('Adult')
+    # JUVENILE = _('Juvenile')
+    # BLANK = _('')
+    # AGE_OPTIONS = [ADULT, JUVENILE, BLANK]
     age = models.CharField(
         max_length=10,
-        blank=True
+        blank=True,
+        help_text=_('Adult or Juvenile')
+        # choices=AGE_OPTIONS
     )
     primary_fur_color = models.CharField(
         max_length=100,
