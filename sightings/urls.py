@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
+    path('stats', views.stats),
 ]
 
 # '' is what url match (after strip out prior url)
