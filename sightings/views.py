@@ -75,30 +75,10 @@ def details(request, input_id):
             return render(request, 'sightings/details_with_form.html', context)
 
 
-# def edit_sighting(request):
-#     if request.method == 'POST':
-#         # request.POST is the dictionary of payload we got from the POST
-#         form = EditSightingForm(request.POST)
-#         input_id = request.POST.get('unique_squirrel_id')
-#         squirrel = get_object_or_404(Sighting, pk=input_id)
-#         # Data validation will happen in EditSightingForm
-#         if form.is_valid():
-#             # The one who modify the database is form, not
-#             form.save()
-#             context = {
-#                 'squirrel': squirrel
-#                 'mode': 'Saved your changes'
-#             }
-#             return render(request, 'sightings/details.html', context)
-#         else:
-#             # status=400
-#             context = {
-#                 'squirrel': squirrel
-#                 'mode': 'Some fields are not in the correct format. Please try again.'
-#             }
-#             return render(request, 'sightings/details.html', context)
-
-#     # If someone assess this view using GET, lets tell them
-#     # But it should not happen
-#     return JsonResponse({}, status=405)
+def map_view(request):
+    sightings_100 = Sighting.objects.all()[:100]
+    context = {
+            'sightings':sightings_100,
+    }
+    return render(request, 'sightings/map.html', context)
 
