@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ s.unique_squirrel_id }}</td>
                     <td>{{ s.date }}</td>
-                    <td><a href='/sightings/{{ s.unique_squirrel_id }}'>more</a></td>
+                    <td><a href="{% url 'sightings:details' s.unique_squirrel_id %}">more</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

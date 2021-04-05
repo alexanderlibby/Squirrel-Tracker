@@ -1,0 +1,54 @@
+{% extends 'sightings/base.html' %}
+
+{% load static %}
+
+{% block title %} {{ squirrel.unique_squirrel_id }} {% endblock %}
+
+{% block main %}
+<section class="jumbotron text-center">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>
+                Sighting ID: {{ squirrel.unique_squirrel_id }}
+            </h1>
+            <a href="/sightings" class="btn btn-secondary my-2">Back to All Sightings</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<div class="row">
+    <div class="col-lg">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Unique Squirrel Id</th>
+                    <td>{{ squirrel.unique_squirrel_id }}</td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ squirrel.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Longtitude</th>
+                    <td>{{ squirrel.longitude }}</td>
+                </tr>
+                <tr>
+                    <th>Shift</th>
+                    <td>{{ squirrel.shift }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ squirrel.date }}</td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>{{ squirrel.age }}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock %}
