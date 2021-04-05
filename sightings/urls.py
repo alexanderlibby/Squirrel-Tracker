@@ -3,7 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
+    path('map/', views.map),
 ]
+
+
 
 # '' is what url match (after strip out prior url)
 # views.index is what the function will be called

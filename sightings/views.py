@@ -28,3 +28,12 @@ def details(request, unique_squirrel_id):
     
     str(unique_squirrel_id)
     return render(request, 'sighting/')
+
+def map(request):
+    sightings_100 = Sighting.objects.all()[:100]
+    context = {
+            'sightings_100': sightings_100,
+    }
+    return render(request, 'sightings/map.html', context)
+
+
