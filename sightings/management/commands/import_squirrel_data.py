@@ -21,8 +21,8 @@ class Command(BaseCommand):
                     # Create Sighting instance and use row to fill data
                     try:
                         sighting = Sighting(
-                            latitude=float(row['X']),
-                            longitude=float(row['Y']),
+                            latitude=float(row['Y']),
+                            longitude=float(row['X']),
                             unique_squirrel_id=row['Unique Squirrel ID'],
                             shift=row['Shift'],
                             date=datetime.date(
