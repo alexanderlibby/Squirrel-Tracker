@@ -7,7 +7,7 @@ from sightings.models import Sighting
 
 
 def index(request):
-    sightings_100 = Sighting.objects.all()[:10]
+    sightings_100 = Sighting.objects.all()[:100]
     context = {
             'sightings_100':sightings_100,
     }
