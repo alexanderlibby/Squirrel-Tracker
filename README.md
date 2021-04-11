@@ -14,4 +14,4 @@ Project Group 57, Section 1
 UNIs: [adl2163, co2490]
 
 ## Link to server running the application
-TO FILL IN
+https://tools-for-analytics-302903.ue.r.appspot.com/sightings/
