@@ -7,6 +7,8 @@ from .models import Sighting
 
 # Create your views here.
 
+def home(request):
+    return redirect('/sightings/')
 
 def index(request):
     """
