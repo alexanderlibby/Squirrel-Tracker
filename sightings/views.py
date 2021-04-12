@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from .forms import EditSightingForm
+from .forms import AddSightingForm
 
 from .models import Sighting
 
@@ -105,6 +106,19 @@ def stats(request):
 
 
 def add(request):
-    return render(request, 'sightings/add.html')
+    if request.method == 'POST':
+        form = AddSightingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/sightings/')
+    else:
+        form = AddSightingForm()
+    
+    context = {
+            'form':form,
+    }
 
+    return render(request, 'sightings/add.html', context)
+
+    
     

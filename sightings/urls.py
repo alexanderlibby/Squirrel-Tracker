@@ -6,7 +6,7 @@ app_name = 'sightings'
 urlpatterns = [
     path('', views.index, name='index'),
     re_path(r'^(?P<input_id>[0-9A-Z]+-[APM]{2}-[0-9]{4}-[0-9]{2})/$', views.details, name='details'),
-    path('stats/', views.stats)
+    path('stats/', views.stats),
     path('add/', views.add)
 
 ]
