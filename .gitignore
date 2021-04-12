@@ -3,9 +3,5 @@ __pycache__/*.pyc
 db.sqlite3
 .env
 .env-common
-.gcloudignore
 app.yaml
 service-account-key.json
-cloud_sql_proxy
-main.py
-start-env.sh
