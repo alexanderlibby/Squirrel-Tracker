@@ -25,3 +25,8 @@ class EditSightingForm(ModelForm):
             "date",
             "age"
         }
+
+class AddSighting(ModelForm):
+    class Meta:
+        model = Sighting
+        fields = '__all__'

@@ -1,0 +1,50 @@
+{% extends 'sightings/base.html' %}
+
+{% load static %}
+
+{% block title %} Squirrel Sightings {% endblock %}
+
+{% block main %}
+<section class="jumbotron text-center">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>
+                Add a Squirrel Sightings
+            </h1>
+           
+        </div>
+    </div>
+</section>
+
+
+<div class="row">
+    <div class="col-lg">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>AM Shift Percent</th>
+                    <th>PM Shift Percent</th>
+                    <th>Adult Squirrel Percent</th>
+		    <th>Juvenile Squirrel Percent</th>
+		    <th>Percent of Squirrels Running</th>
+		    <th>Percent of Squirrels Eating</th>
+		    <th>Percent of Squirrels Climbing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+		    <td>{{ shift_AM_pct }}</td>
+                    <td>{{ shift_PM_pct }}</td>
+		    <td>{{ age_Adult_pct }}</td>
+		    <td>{{ age_Juvenile_pct }}</td>
+		    <td>{{ running_pct }}</td>
+		    <td>{{ eating_pct }}</td>
+		    <td>{{ climbing_pct }}</td>
+                </tr>
+            </tbody>
+
+
+        </table>
+    </div>
+</div>
+{% endblock %}
