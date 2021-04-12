@@ -8,6 +8,9 @@ from .models import Sighting
 
 # Create your views here.
 
+def home(request):
+    return redirect('/sightings/')
+
 def index(request):
     """
     A view that lists all squirrel sightings with links to view each sighting
