@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY') or 'abcef12345'
-SECRET_KEY = '(yi^a7y(_h_5rsm%v@7om*3yimy1ungt07fei6b*6$w6jhu_l0'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = '(yi^a7y(_h_5rsm%v@7om*3yimy1ungt07fei6b*6$w6jhu_l0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = (os.environ.get('DEBUG') or '').strip().lower() in ('1', 'true')
+# DEBUG = True
+DEBUG = (os.environ.get('DEBUG') or '').strip().lower() in ('1', 'true')
 
 ALLOWED_HOSTS = ['*']
 
@@ -152,8 +152,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'
 
 if os.environ.get('GAE_APPLICATION'):
     GS_DEFAULT_ACL = 'publicRead'
